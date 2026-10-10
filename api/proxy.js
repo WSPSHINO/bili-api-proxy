@@ -29,6 +29,11 @@ export async function handle(request, { token = process.env.PROXY_TOKEN, fetcher
   for (const key of ['user-agent', 'referer', 'cookie', 'origin', 'content-type']) {
     if (request.headers.has(key)) headers.set(key, request.headers.get(key));
   }
+
+  // 仅针对视频详情接口测试客户端 User-Agent
+if (target.pathname === '/x/web-interface/view') {
+  headers.set('user-agent', 'okhttp/4.9.3');
+}
   // The supported ticket call carries its parameters in the query, with no body.
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 12000);
