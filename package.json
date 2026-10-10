@@ -1,0 +1,1 @@
+{"name":"bili-api-proxy","private":true,"type":"module","engines":{"node":"24.x"},"scripts":{"test":"node --test"}}
